@@ -50,8 +50,7 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"""
 
 
 fn get_set_power(row: PythonObject, re: PythonObject) raises -> Int:
-    let colour_counts = Python.dict()
-
+    let vals = Python.dict()
     let colour_info = re.split(': ', row)[1]
     var colour_strs = re.split(',|; ', colour_info)
 
@@ -59,21 +58,19 @@ fn get_set_power(row: PythonObject, re: PythonObject) raises -> Int:
         let grps = re.search(r"(\d+) (\w+)", colour_str).groups()
         let col = grps[1][0]
         let cnt = atol(grps[0].to_string())
-        colour_counts[col] = max(cnt, colour_counts.get(col, 0).to_float64().to_int())
+        vals[col] = max(cnt, vals.get(col, 0).to_float64().to_int())
 
-    let r = colour_counts.get('r', 0).to_float64().to_int()
-    let g = colour_counts.get('g', 0).to_float64().to_int()
-    let b = colour_counts.get('b', 0).to_float64().to_int()
-    return r * g * b
+    let power = vals.get('r', 0) * vals.get('g', 0) * vals.get('b', 0)
+    return power.to_float64().to_int()
 
 fn main() raises:
-    let input: String
+    let inpt: String
     with open("day2/input.txt", "r") as f:
-        input = f.read()
+        inpt = f.read()
 
     # split into rows
     let re = Python.import_module('re')
-    var rows = re.split(r"\n", input)
+    var rows = re.split(r"\n", inpt)
     var total_sum = 0
     for row in rows:
         total_sum += get_set_power(row, re)
