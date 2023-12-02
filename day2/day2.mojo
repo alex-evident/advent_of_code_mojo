@@ -8,7 +8,7 @@ fn get_id(row: PythonObject, re: PythonObject) raises -> Int:
 
 fn game_is_possible(row: PythonObject, re: PythonObject) raises -> Bool:
     # I can't get typing to work for Dictionary type, so
-    # just going to declare this variable in every loop...
+    # just going to declare this in every iteration...
     let maxvals = Python.dict()
     maxvals['r'] = 12
     maxvals['g'] = 13
