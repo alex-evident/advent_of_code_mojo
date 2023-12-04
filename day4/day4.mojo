@@ -33,6 +33,10 @@ fn main() raises:
         # for a downstream card, increment its ref count by the number of
         # references to the current card
         for m in range(matches):
+            # boundary condition since the SIMD is longer than the real space of cards
+            if i + 1 + m > len(games):
+                continue
+
             card_counts[i + 1 + m] += card_counts[i]
 
     print('Q1:', q1_sum)
