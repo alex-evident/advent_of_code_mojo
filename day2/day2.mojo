@@ -3,7 +3,7 @@ from math import max
 
 fn get_id(row: PythonObject, re: PythonObject) raises -> Int:
     let mo = re.search(r"Game (\d+):.*", row)
-    let game_num = mo.groups()[0].to_string()
+    let game_num = mo.groups()[0].__str__()
     return atol(game_num)
 
 fn game_is_possible(row: PythonObject, re: PythonObject) raises -> Bool:
@@ -20,7 +20,7 @@ fn game_is_possible(row: PythonObject, re: PythonObject) raises -> Bool:
     for colour_str in colour_strs:
         let grps = re.search(r"(\d+) (\w+)", colour_str).groups()
         let col = grps[1][0]
-        let cnt = atol(grps[0].to_string())
+        let cnt = atol(grps[0].__str__())
         if cnt > maxvals[col].to_float64().to_int():
             return False
     return True
@@ -57,7 +57,7 @@ fn get_set_power(row: PythonObject, re: PythonObject) raises -> Int:
     for colour_str in colour_strs:
         let grps = re.search(r"(\d+) (\w+)", colour_str).groups()
         let col = grps[1][0]
-        let cnt = atol(grps[0].to_string())
+        let cnt = atol(grps[0].__str__())
         vals[col] = max(cnt, vals.get(col, 0).to_float64().to_int())
 
     let power = vals.get('r', 0) * vals.get('g', 0) * vals.get('b', 0)

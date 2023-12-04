@@ -3,7 +3,7 @@ from utils.vector import DynamicVector
 from utils.static_tuple import StaticTuple
 
 fn get_row_val(row_py: PythonObject) raises -> Int:
-    let row = row_py.to_string()
+    let row = row_py.__str__()
     # Need to intialise these here so the compiler knows they'll be updated
     var first_int = 0
     var last_int = 0
