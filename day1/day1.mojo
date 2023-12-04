@@ -70,7 +70,6 @@ fn str_to_int(input: String) -> Int:
         if input[:len(nums[i])] == nums[i]:
             return i + 1
 
-    # -1 is our "no hits" value
     return -1
 
 fn main() raises:
