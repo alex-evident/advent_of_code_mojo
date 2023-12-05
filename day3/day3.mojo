@@ -67,7 +67,8 @@ fn get_gear_score(digits: Tensor[DType.int32], i: Int, j: Int, max_i: Int, max_j
     if bottom_safe:
         update_min_max(digits, min_digit, max_digit, i+1, j)
     
-    # not robust to same number on either side of a gear...
+    # not robust to same number on either side of a gear, that would req keeping track of gaps
+    # between nums...
     print('min', min_digit, 'max', max_digit, 'at pos', i, j)
     if min_digit == max_digit:
         return 0
