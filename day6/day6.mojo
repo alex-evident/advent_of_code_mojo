@@ -15,13 +15,13 @@ fn mainQ1() raises:
     let t_str = inpt[0]
     let d_str = inpt[1]
 
-    # going to split out the race info by regex
+    # split out the race info by regex
     let re = Python.import_module('re')
     let t_split = re.split(r"\s+", t_str)
     let d_split = re.split(r"\s+", d_str)
 
     # first element is the "Time"/"Distance" strings, skip those - a zip func would be nice
-    var race_options = SIMD[DType.int32, 4](1)
+    var race_options = SIMD[DType.int32, 8](1)
     for i in range(1, t_split.__len__()):
         let t = atol(str(t_split[i]))
         let d = atol(str(d_split[i]))
