@@ -36,5 +36,3 @@ fn main() raises:
     let time = atol(inpt[0].split(':')[1].replace(' ', ''))
     let dist = atol(inpt[1].split(':')[1].replace(' ', ''))
     print(get_options_for_race((time, dist)))
-
-    
