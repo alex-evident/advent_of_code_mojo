@@ -20,20 +20,18 @@ fn mainQ1() raises:
     let t_split = re.split(r"\s+", t_str)
     let d_split = re.split(r"\s+", d_str)
 
-    # first element is the "Time"/"Distance" strings, skip those - zip impl would be nice
-    # var races = DynamicVector[Tuple[Int, Int]]()
+    # first element is the "Time"/"Distance" strings, skip those - a zip func would be nice
     var race_options = SIMD[DType.int32, 32](1)
     for i in range(1, t_split.__len__()):
         let t = atol(str(t_split[i]))
         let d = atol(str(d_split[i]))
-        # races.push_back((t, d))
         race_options[i-1] = get_options_for_race((t, d))
 
     print(race_options.reduce_mul())
 
 fn main() raises:
     # I'm sure there's a smart way of doing this that just finds the min and
-    # max but the problem isn't perf intensive
+    # max but the problem isn't perf intensive so...
     let inpt = Path('./day6/input.txt').read_text().split('\n')
     let time = atol(inpt[0].split(':')[1].replace(' ', ''))
     let dist = atol(inpt[1].split(':')[1].replace(' ', ''))
