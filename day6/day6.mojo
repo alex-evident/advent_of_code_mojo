@@ -21,7 +21,7 @@ fn mainQ1() raises:
     let d_split = re.split(r"\s+", d_str)
 
     # first element is the "Time"/"Distance" strings, skip those - a zip func would be nice
-    var race_options = SIMD[DType.int32, 32](1)
+    var race_options = SIMD[DType.int32, 4](1)
     for i in range(1, t_split.__len__()):
         let t = atol(str(t_split[i]))
         let d = atol(str(d_split[i]))
