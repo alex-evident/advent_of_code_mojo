@@ -42,7 +42,7 @@ fn try_all_j_options(hand: String) raises -> Int:
             card_power = hand_power
             max_power = atol(hand_power)
 
-        # now we iterate over the cards and append to the string
+    # iterate over the cards and append to the string
     for i in range(len(hand)):
         let ch = hand[i]
         if ch == 'A':
@@ -67,6 +67,7 @@ fn main() raises:
     let bt = Python.import_module('builtins')
     let num_hands = len(inpt)
 
+    # need to use builtin dict to comply with Python's sorted func
     let hands = bt.dict()
     for i in range(len(inpt)):
         let split = inpt[i].split(' ')
