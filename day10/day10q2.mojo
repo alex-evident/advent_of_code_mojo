@@ -33,6 +33,7 @@ fn get_next(xy: SIMD, map: Tensor, dir: String) -> Tuple[StringLiteral, SIMD[DTy
     var polarity = SIMD[DType.float64, 2]() # 0 is the vertical matrix, 1 is the horizontal matrix
     let symbol = chr(int(map[Index(y, x)]))
     var new_dir: StringLiteral = ''
+    # could be cute to rewrite this to use complex numbers to handle rotations
     if symbol == '-':
         if dir == 'right':
             new_dir = 'right'
