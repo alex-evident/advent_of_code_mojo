@@ -1,0 +1,89 @@
+VERT
+
+[ 0,  0,  1, -1,  0],
+[ 0,  1,  1, -1,  0],
+[ 1,  1,  0, -1, -1],
+[ 1, -1,  0,  0, -1],
+[ 1, -1,  0,  0,  0]
+
+HORIZ
+[ 0,  0,  1,  1,  0],
+[ 0,  1,  1,  0,  0],
+[ 1,  1,  0,  1,  1],
+[ 0, -1, -1, -1, -1],
+[-1, -1,  0,  0,  0]
+
+top left 0, 0
+leftsum   = v: 0
+rightsum  = v: 0
+
+topsum    = h: 0
+bottomsum = h: 2
+
+middle 2, 2
+leftsum   = v:  2
+rightsum  = v: -2
+
+topsum    = h:  2
+bottomsum = h: -1
+
+
+...........
+.S-------7.
+.|F-----7|.
+.||OOOOO||.
+.||OOOZX||.
+.|L-7QF-J|.
+.|II|O|MI|.
+.L--JOL--J.
+.....O.....
+
+# L7FJ only count for half, |- count for 1
+
+
+# proposed rules
+# 1. if any sum is 0, OUTSIDE
+# 2. if all sums are even, OUTSIDE
+# 3. INSIDE
+
+Z
+lsum = 2
+rsum = 2
+tsum = 2
+bsum = 2
+
+Q
+lsum = 3
+rsum = 3
+tsum = 2
+bsum = 0
+
+X OUTSIDE
+leftsum   = 2
+rightsum  = 2
+topsum    = 2
+bottomsum = 2
+
+M INSIDE
+leftsum   =  1
+rightsum  = -1
+
+topsum    =  1
+bottomsum = -1
+
+..F7.
+.FJ|.
+SJXL7
+|F--J
+LJ..Q
+
+# this summing would be so easy if you had numpy slicing in Mojo tensors :)))))))
+
+X
+lsum = 1
+rsum = 1
+tsum = 1
+bsum = 1
+
+Q 
+
