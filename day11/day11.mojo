@@ -82,9 +82,7 @@ fn main() raises:
     # get every pair of galaxies and their distances
     var combs = iter.combinations(all_coords_expanded, 2)
     var total_distance = 0
-    var l = 0
     for comb in combs:
-        l += 1
         total_distance += get_distance(comb)
 
-    print(total_distance)
+    print('distance:', total_distance)
